@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { DropdownButton, MenuItem } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
+
 class BooksGrid extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -28,13 +32,13 @@ class BooksGrid extends Component {
                   opacity: (applyOpacityWhenOnBookshelf && book.shelf !== 'none' ? 0.25 : 1)
                 }} />
                 <div className="book-shelf-changer">
-                  <select value={book.shelf} onChange={(event) => onChangeShelf(book, event.target.value)}>
-                    <option value="none" disabled>Move to...</option>
-                    <option value="currentlyReading" disabled={book.shelf === 'currentlyReading'}>Currently Reading</option>
-                    <option value="wantToRead" disabled={book.shelf === 'wantToRead'}>Want to Read</option>
-                    <option value="read" disabled={book.shelf === 'read'}>Read</option>
-                    <option value="none" disabled={book.shelf === 'none'}>None</option>
-                  </select>
+                  <DropdownButton bsStyle="success" title="" id={`dropdown-${book.id}`} onSelect={(eventKey) => onChangeShelf(book, eventKey)}>
+                    <MenuItem eventKey="currentlyReading" active={book.shelf === 'currentlyReading'}>Currently Reading</MenuItem>
+                    <MenuItem eventKey="wantToRead" active={book.shelf === 'wantToRead'}>Want to Read</MenuItem>
+                    <MenuItem eventKey="read" active={book.shelf === 'read'}>Read</MenuItem>
+                    <MenuItem divider />
+                    <MenuItem eventKey="none" active={book.shelf === 'none'}>None</MenuItem>
+                  </DropdownButton>
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
