@@ -9,7 +9,8 @@ import BooksGrid from './BooksGrid'
 class SearchBooks extends Component {
   static propTypes = {
     bookshelf: PropTypes.object.isRequired,
-    onChangeShelf: PropTypes.func.isRequired
+    onChangeShelf: PropTypes.func.isRequired,
+    setProgress: PropTypes.func.isRequired
   }
 
   state = {
@@ -37,15 +38,21 @@ class SearchBooks extends Component {
 
   updateQueryAjax (query) {
     if (query) {
+      const { setProgress } = this.props
+      setProgress(true)
       let currentPromise
       (this.lastPromise = currentPromise = BooksAPI.search(query)).then((books) => {
-        if (this.lastPromise === currentPromise) {
+        if (this.lastPromise === currentPromise) { // render only if it is the last request
           if (!books.error) {
             this.setState({ books, empty: false })
           } else {
             this.setState({ books: [], empty: true })
           }
         }
+      }).then(() => {
+        setProgress(false)
+      }).catch(() => {
+        setProgress(false)
       })
     } else {
       this.setState({ books: [], empty: false })
@@ -54,7 +61,7 @@ class SearchBooks extends Component {
 
   render () {
     const { bookshelf, onChangeShelf } = this.props
-    const { query, books } = this.state
+    const { query, books, empty } = this.state
 
     books.forEach(book => {
       book.shelf = book.id in bookshelf ? bookshelf[book.id] : 'none'
@@ -75,7 +82,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.empty && (<div className="search-books-noresult">Sorry! No result found :-(</div>)}
+          {empty && (<div className="search-books-noresult">Sorry! No result found :-(</div>)}
           <BooksGrid books={books} onChangeShelf={onChangeShelf} applyOpacityWhenOnBookshelf />
         </div>
       </div>
