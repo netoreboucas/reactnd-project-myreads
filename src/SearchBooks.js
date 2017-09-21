@@ -23,21 +23,33 @@ class SearchBooks extends Component {
 
   constructor (props) {
     super(props)
-    this.updateQueryAjax = debounce(200, this.updateQueryAjax)
+    this.updateQueryAjax = debounce(500, this.updateQueryAjax)
   }
 
   componentDidMount () {
     this.searchInput.focus()
+    this.readHash()
+  }
+
+  componentWillReceiveProps () {
+    this.readHash()
+  }
+
+  readHash () {
+    this.updateQuery(window.location.hash ? window.location.hash.substring(1) : '')
   }
 
   updateQuery (query) {
-    query = query.trim()
-    this.setState({ query })
-    this.updateQueryAjax(query)
+    if (this.state.query !== query) {
+      this.setState({ query })
+      this.updateQueryAjax(query)
+    }
   }
 
   updateQueryAjax (query) {
+    query = query.trim()
     if (query) {
+      window.location.hash = query
       const { setProgress } = this.props
       setProgress(true)
       let currentPromise
