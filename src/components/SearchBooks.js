@@ -95,7 +95,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           {empty && (<div className="search-books-noresult">Sorry! No result found :-(</div>)}
-          <BooksGrid books={books} onChangeShelf={onChangeShelf} applyOpacityWhenOnBookshelf />
+          <BooksGrid books={books} onChangeShelf={onChangeShelf} renderingOutsideBookshelf />
         </div>
       </div>
     )

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import Bookshelf from './Bookshelf'
+import { shelves } from '../shared/Constants'
 
 class ListBooks extends Component {
   static propTypes = {
@@ -20,21 +21,13 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Bookshelf
-              title="Currently Reading"
-              books={books.filter(b => b.shelf === 'currentlyReading')}
-              onChangeShelf={onChangeShelf}
-            />
-            <Bookshelf
-              title="Want to Read"
-              books={books.filter(b => b.shelf === 'wantToRead')}
-              onChangeShelf={onChangeShelf}
-            />
-            <Bookshelf
-              title="Read"
-              books={books.filter(b => b.shelf === 'read')}
-              onChangeShelf={onChangeShelf}
-            />
+            {shelves.map(shelf => (
+              <Bookshelf
+                title={shelf.title}
+                books={books.filter(b => b.shelf === shelf.key)}
+                onChangeShelf={onChangeShelf}
+              />
+            ))}
           </div>
         </div>
         <div className="open-search">

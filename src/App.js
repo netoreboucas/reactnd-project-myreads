@@ -26,6 +26,8 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (book, shelf) => {
+    if (book.shelf === shelf) return // Nothing changed
+
     this.setProgress(true)
     BooksAPI.update(book, shelf).then((shelves) => {
       let books = this.state.books.map(book => {
@@ -38,7 +40,7 @@ class BooksApp extends React.Component {
         return book
       })
 
-      if (!books.find(b => b.id === book.id)) {
+      if (!books.find(b => b.id === book.id)) { // new book
         book.shelf = shelf
         books.push(book)
       }
