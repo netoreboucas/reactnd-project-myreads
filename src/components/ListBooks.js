@@ -8,11 +8,12 @@ import { shelves } from '../shared/Constants'
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    onChangeShelf: PropTypes.func.isRequired
+    onChangeShelf: PropTypes.func.isRequired,
+    showBookDetails: PropTypes.func.isRequired
   }
 
   render () {
-    const { books, onChangeShelf } = this.props
+    const { books, onChangeShelf, showBookDetails } = this.props
 
     return (
       <div className="list-books">
@@ -26,6 +27,7 @@ class ListBooks extends Component {
                 title={shelves[key]}
                 books={books.filter(b => b.shelf === key)}
                 onChangeShelf={onChangeShelf}
+                showBookDetails={showBookDetails}
               />
             ))}
           </div>

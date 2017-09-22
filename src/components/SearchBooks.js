@@ -10,6 +10,7 @@ class SearchBooks extends Component {
   static propTypes = {
     bookshelf: PropTypes.object.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    showBookDetails: PropTypes.func.isRequired,
     setProgress: PropTypes.func.isRequired
   }
 
@@ -72,7 +73,7 @@ class SearchBooks extends Component {
   }
 
   render () {
-    const { bookshelf, onChangeShelf } = this.props
+    const { bookshelf, onChangeShelf, showBookDetails } = this.props
     const { query, books, empty } = this.state
 
     books.forEach(book => {
@@ -95,7 +96,12 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           {empty && (<div className="search-books-noresult">Sorry! No result found :-(</div>)}
-          <BooksGrid books={books} onChangeShelf={onChangeShelf} renderingOutsideBookshelf />
+          <BooksGrid
+            books={books}
+            onChangeShelf={onChangeShelf}
+            showBookDetails={showBookDetails}
+            renderingOutsideBookshelf
+          />
         </div>
       </div>
     )

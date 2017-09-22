@@ -1,17 +1,20 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import './App.css'
-
 import Progress from 'react-progress-2'
+
+import 'bootstrap/dist/css/bootstrap.css'
 import 'react-progress-2/main.css'
+import './App.css'
 
 import * as BooksAPI from './shared/BooksAPI'
 import ListBooks from './components/ListBooks'
 import SearchBooks from './components/SearchBooks'
+import BookDetails from './components/BookDetails'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    selectedBook: null
   }
 
   componentDidMount () {
@@ -53,6 +56,10 @@ class BooksApp extends React.Component {
     })
   }
 
+  showBookDetails = (book) => {
+    this.setState({ selectedBook: book })
+  }
+
   setProgress = (visible) => {
     Progress[visible ? 'show' : 'hide']()
   }
@@ -65,13 +72,15 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        <Progress.Component
-          thumbStyle={{background: '#60ac5d'}} />
+        <Progress.Component thumbStyle={{background: '#60ac5d'}} />
+
+        <BookDetails book={this.state.selectedBook} onClose={() => this.setState({ selectedBook: null })} />
 
         <Route exact path="/" render={() => (
           <ListBooks
             books={this.state.books}
             onChangeShelf={this.changeShelf}
+            showBookDetails={this.showBookDetails}
           />
         )} />
 
@@ -79,6 +88,7 @@ class BooksApp extends React.Component {
           <SearchBooks
             bookshelf={bookshelf}
             onChangeShelf={this.changeShelf}
+            showBookDetails={this.showBookDetails}
             setProgress={this.setProgress}
           />
         )} />
