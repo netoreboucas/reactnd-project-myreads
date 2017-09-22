@@ -24,6 +24,7 @@ class ListBooks extends Component {
           <div>
             {Object.keys(shelves).map(key => (
               <Bookshelf
+                key={key}
                 title={shelves[key]}
                 books={books.filter(b => b.shelf === key)}
                 onChangeShelf={onChangeShelf}
