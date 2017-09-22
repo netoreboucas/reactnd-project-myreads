@@ -125,6 +125,9 @@ body, .app {
   padding: 10px 15px;
   text-align: left;
 }
+.dropdown-toggle.btn-success:focus, .dropdown-toggle.btn-success.focus {
+  border-color: #4cae4c
+}
 
 .book {
   width: 140px;
