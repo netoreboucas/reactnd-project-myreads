@@ -1,5 +1,5 @@
-export const shelves = [
-  { key: 'currentlyReading', title: 'Currently Reading' },
-  { key: 'wantToRead', title: 'Want to Read' },
-  { key: 'read', title: 'Read' }
-]
+export const shelves = {
+  currentlyReading: 'Currently Reading',
+  wantToRead: 'Want to Read',
+  read: 'Read'
+}

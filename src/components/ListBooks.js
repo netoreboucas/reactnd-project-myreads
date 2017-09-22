@@ -21,10 +21,10 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            {shelves.map(shelf => (
+            {Object.keys(shelves).map(key => (
               <Bookshelf
-                title={shelf.title}
-                books={books.filter(b => b.shelf === shelf.key)}
+                title={shelves[key]}
+                books={books.filter(b => b.shelf === key)}
                 onChangeShelf={onChangeShelf}
               />
             ))}

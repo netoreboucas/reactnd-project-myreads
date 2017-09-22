@@ -130,7 +130,7 @@ body, .app {
 }
 
 .book {
-  width: 140px;
+  width: 128px;
 }
 .book-title,
 .book-authors {
@@ -150,9 +150,16 @@ body, .app {
   align-items: flex-end;
 }
 
+.book-top .label {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+}
+
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: -10px;
   bottom: -10px;
 }
 
