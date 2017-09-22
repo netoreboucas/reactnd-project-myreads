@@ -5,9 +5,9 @@ import './App.css'
 import Progress from 'react-progress-2'
 import 'react-progress-2/main.css'
 
-import * as BooksAPI from './BooksAPI'
-import ListBooks from './ListBooks'
-import SearchBooks from './SearchBooks'
+import * as BooksAPI from './shared/BooksAPI'
+import ListBooks from './components/ListBooks'
+import SearchBooks from './components/SearchBooks'
 
 class BooksApp extends React.Component {
   state = {

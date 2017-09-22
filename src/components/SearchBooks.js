@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { debounce } from 'throttle-debounce'
 
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../shared/BooksAPI'
 import BooksGrid from './BooksGrid'
 
 class SearchBooks extends Component {
