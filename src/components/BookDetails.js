@@ -16,8 +16,6 @@ class BookDetails extends Component {
     const { book } = this.props
     if (!book) return false
 
-    console.log(book)
-
     return (
       <Modal show onHide={this.close} dialogClassName="book-details-modal">
         <Modal.Header closeButton>

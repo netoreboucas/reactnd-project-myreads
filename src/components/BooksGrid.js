@@ -7,6 +7,7 @@ class BooksGrid extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    onChangeCheck: PropTypes.func.isRequired,
     showBookDetails: PropTypes.func.isRequired,
     renderingOutsideBookshelf: PropTypes.bool
   }
@@ -16,7 +17,7 @@ class BooksGrid extends Component {
   }
 
   render () {
-    const { books, onChangeShelf, showBookDetails, renderingOutsideBookshelf } = this.props
+    const { books, onChangeShelf, onChangeCheck, showBookDetails, renderingOutsideBookshelf } = this.props
 
     return (
       <ol className="books-grid">
@@ -25,6 +26,7 @@ class BooksGrid extends Component {
             <Book
               book={book}
               onChangeShelf={onChangeShelf}
+              onChangeCheck={onChangeCheck}
               showBookDetails={showBookDetails}
               renderingOutsideBookshelf={renderingOutsideBookshelf}
             />

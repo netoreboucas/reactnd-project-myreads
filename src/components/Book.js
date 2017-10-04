@@ -8,6 +8,7 @@ class Book extends Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    onChangeCheck: PropTypes.func.isRequired,
     showBookDetails: PropTypes.func.isRequired,
     renderingOutsideBookshelf: PropTypes.bool
   }
@@ -17,7 +18,7 @@ class Book extends Component {
   }
 
   render () {
-    const { book, onChangeShelf, showBookDetails } = this.props
+    const { book, onChangeShelf, onChangeCheck, showBookDetails } = this.props
     const renderingOutsideBookshelf = this.props.renderingOutsideBookshelf && book.shelf !== 'none'
 
     return (
@@ -34,6 +35,7 @@ class Book extends Component {
           {renderingOutsideBookshelf && (
             <Label bsStyle="primary">{shelves[book.shelf]}</Label>
           )}
+          <div className={'book-check ' + (book.checked ? 'checked' : 'unchecked')} onClick={() => onChangeCheck(book)} />
           <div className="book-shelf-changer">
             <DropdownButton bsStyle="success" title="" id={`dropdown-${book.id}`} onSelect={(eventKey) => onChangeShelf(book, eventKey)}>
               {Object.keys(shelves).map(key => (

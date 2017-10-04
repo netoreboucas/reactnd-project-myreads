@@ -11,18 +11,25 @@ body, .app {
 /* main page */
 
 .list-books-title {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
   padding: 10px 0;
   background: #2e7c31;
   text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }
 .list-books-title h1 {
+  font-size: 30px;
   font-weight: 400;
   margin: 0;
   color: white;
 }
 
 .list-books-content {
-  padding: 0 0 80px;
+  padding: 53px 0 80px;
   flex: 1;
 }
 
@@ -80,6 +87,7 @@ body, .app {
 }
 .search-books-bar input {
   width: 100%;
+  height: 53px;
   padding: 15px 10px;
   font-size: 1.25em;
   border: none;
@@ -98,6 +106,7 @@ body, .app {
   background-repeat: no-repeat;
   background-size: 28px;
   font-size: 0;
+  cursor: pointer;
 }
 
 .search-books-results {
@@ -145,16 +154,37 @@ body, .app {
 
 .book-top {
   position: relative;
-  height: 200px;
+  height: 193px;
   display: flex;
   align-items: flex-end;
 }
 
 .book-top .label {
   position: absolute;
-  top: -10px;
+  top: -17px;
   left: 0;
   right: 0;
+}
+
+.book-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-color: #4cae4c;
+  cursor: pointer;
+}
+
+.book-check.checked {
+  background-image: url('./icons/checked.svg');
+}
+
+.book-check.unchecked {
+  background-image: url('./icons/unchecked.svg');
 }
 
 .book-shelf-changer {
@@ -192,4 +222,41 @@ body, .app {
 
 .book-details-modal {
   width: 90%
+}
+
+/* multi-shelf-changer */
+
+.multi-shelf-changer {
+  position: fixed;
+  width: 100%;
+  height: 53px;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+}
+
+.multi-shelf-changer > .close {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url('./icons/close.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.multi-shelf-changer > span {
+  line-height: 53px;
+}
+
+.multi-shelf-changer > button {
+  margin: 10px;
 }

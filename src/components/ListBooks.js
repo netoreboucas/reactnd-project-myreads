@@ -3,17 +3,21 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import Bookshelf from './Bookshelf'
+import MultiSelfChanger from './MultiSelfChanger'
 import { shelves } from '../shared/Constants'
 
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    onChangeCheck: PropTypes.func.isRequired,
+    onClearChecks: PropTypes.func.isRequired,
+    onMultiChangeShelf: PropTypes.func.isRequired,
     showBookDetails: PropTypes.func.isRequired
   }
 
   render () {
-    const { books, onChangeShelf, showBookDetails } = this.props
+    const { books, onChangeShelf, onChangeCheck, onClearChecks, onMultiChangeShelf, showBookDetails } = this.props
 
     return (
       <div className="list-books">
@@ -28,6 +32,7 @@ class ListBooks extends Component {
                 title={shelves[key]}
                 books={books.filter(b => b.shelf === key)}
                 onChangeShelf={onChangeShelf}
+                onChangeCheck={onChangeCheck}
                 showBookDetails={showBookDetails}
               />
             ))}
@@ -38,6 +43,12 @@ class ListBooks extends Component {
             to="/search"
           >Add a book</Link>
         </div>
+        {books.some(b => b.checked) && (
+          <MultiSelfChanger
+            onClearChecks={onClearChecks}
+            onMultiChangeShelf={onMultiChangeShelf}
+          />
+        )}
       </div>
     )
   }

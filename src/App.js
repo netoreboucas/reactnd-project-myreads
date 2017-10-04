@@ -28,11 +28,11 @@ class BooksApp extends React.Component {
     })
   }
 
-  changeShelf = (book, shelf) => {
+  onChangeShelf = (book, shelf) => {
     if (book.shelf === shelf) return // Nothing changed
 
     this.setProgress(true)
-    BooksAPI.update(book, shelf).then((shelves) => {
+    return BooksAPI.update(book, shelf).then((shelves) => {
       let books = this.state.books.map(book => {
         if (Object.keys(shelves).every(key => {
           return !shelves[key].includes(book.id) || !(book.shelf = key)
@@ -56,6 +56,36 @@ class BooksApp extends React.Component {
     })
   }
 
+  onChangeCheck = (book) => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        if (b.id === book.id) b.checked = !b.checked
+        return b
+      })
+    ))
+  }
+
+  onClearChecks = () => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        b.checked = false
+        return b
+      })
+    ))
+  }
+
+  onMultiChangeShelf = (shelf) => {
+    let promise = Promise.resolve()
+    this.state.books.forEach((book) => {
+      if (book.checked) {
+        promise = promise.then(() => {
+          if (shelf === 'none') book.checked = false
+          return this.onChangeShelf(book, shelf)
+        })
+      }
+    })
+  }
+
   showBookDetails = (book) => {
     this.setState({ selectedBook: book })
   }
@@ -65,6 +95,8 @@ class BooksApp extends React.Component {
   }
 
   render () {
+    const { books } = this.state
+
     let bookshelf = this.state.books.reduce((acc, book) => {
       acc[book.id] = book.shelf
       return acc
@@ -78,8 +110,11 @@ class BooksApp extends React.Component {
 
         <Route exact path="/" render={() => (
           <ListBooks
-            books={this.state.books}
-            onChangeShelf={this.changeShelf}
+            books={books}
+            onChangeShelf={this.onChangeShelf}
+            onChangeCheck={this.onChangeCheck}
+            onClearChecks={this.onClearChecks}
+            onMultiChangeShelf={this.onMultiChangeShelf}
             showBookDetails={this.showBookDetails}
           />
         )} />
@@ -87,7 +122,7 @@ class BooksApp extends React.Component {
         <Route path="/search" render={() => (
           <SearchBooks
             bookshelf={bookshelf}
-            onChangeShelf={this.changeShelf}
+            onChangeShelf={this.onChangeShelf}
             showBookDetails={this.showBookDetails}
             setProgress={this.setProgress}
           />

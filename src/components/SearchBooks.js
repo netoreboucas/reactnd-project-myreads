@@ -5,6 +5,7 @@ import { debounce } from 'throttle-debounce'
 
 import * as BooksAPI from '../shared/BooksAPI'
 import BooksGrid from './BooksGrid'
+import MultiSelfChanger from './MultiSelfChanger'
 
 class SearchBooks extends Component {
   static propTypes = {
@@ -20,10 +21,9 @@ class SearchBooks extends Component {
     empty: false
   }
 
-  lastPromise = null
-
   constructor (props) {
     super(props)
+    this.lastPromise = null
     this.updateQueryAjax = debounce(500, this.updateQueryAjax)
   }
 
@@ -72,6 +72,35 @@ class SearchBooks extends Component {
     }
   }
 
+  onChangeCheck = (book) => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        if (b.id === book.id) b.checked = !b.checked
+        return b
+      })
+    ))
+  }
+
+  onClearChecks = () => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        b.checked = false
+        return b
+      })
+    ))
+  }
+
+  onMultiChangeShelf = (shelf) => {
+    let promise = Promise.resolve()
+    this.state.books.forEach((book) => {
+      if (book.checked) {
+        promise = promise.then(() => {
+          return this.props.onChangeShelf(book, shelf)
+        })
+      }
+    })
+  }
+
   render () {
     const { bookshelf, onChangeShelf, showBookDetails } = this.props
     const { query, books, empty } = this.state
@@ -99,10 +128,17 @@ class SearchBooks extends Component {
           <BooksGrid
             books={books}
             onChangeShelf={onChangeShelf}
+            onChangeCheck={this.onChangeCheck}
             showBookDetails={showBookDetails}
             renderingOutsideBookshelf
           />
         </div>
+        {books.some(b => b.checked) && (
+          <MultiSelfChanger
+            onClearChecks={this.onClearChecks}
+            onMultiChangeShelf={this.onMultiChangeShelf}
+          />
+        )}
       </div>
     )
   }

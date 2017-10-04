@@ -8,11 +8,12 @@ class Bookshelf extends Component {
     title: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired,
+    onChangeCheck: PropTypes.func.isRequired,
     showBookDetails: PropTypes.func.isRequired
   }
 
   render () {
-    const { title, books, onChangeShelf, showBookDetails } = this.props
+    const { title, books, onChangeShelf, onChangeCheck, showBookDetails } = this.props
 
     return (
       <div className="bookshelf">
@@ -21,6 +22,7 @@ class Bookshelf extends Component {
           <BooksGrid
             books={books}
             onChangeShelf={onChangeShelf}
+            onChangeCheck={onChangeCheck}
             showBookDetails={showBookDetails}
           />
         </div>
