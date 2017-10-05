@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './css/BooksGrid.css'
+
 import Book from './Book'
 
 const BooksGrid = ({ books, onChangeShelf, onChangeCheck, showBookDetails, renderingOutsideBookshelf }) => {

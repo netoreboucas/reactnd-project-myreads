@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Modal } from 'react-bootstrap'
 
+import './css/BookDetails.css'
+
 const BookDetails = ({ book, onClose }) => {
   if (!book) return false
 

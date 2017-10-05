@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { debounce } from 'throttle-debounce'
 
+import './css/SearchBooks.css'
+
 import * as BooksAPI from '../shared/BooksAPI'
 import BooksGrid from './BooksGrid'
-import MultiSelfChanger from './MultiSelfChanger'
+import MultiShelfChanger from './MultiShelfChanger'
 
 class SearchBooks extends Component {
   static propTypes = {
@@ -134,7 +136,7 @@ class SearchBooks extends Component {
           />
         </div>
         {books.some(b => b.checked) && (
-          <MultiSelfChanger
+          <MultiShelfChanger
             onClearChecks={this.onClearChecks}
             onMultiChangeShelf={this.onMultiChangeShelf}
           />

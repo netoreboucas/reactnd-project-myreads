@@ -1,0 +1,85 @@
+.btn-success:focus, .btn-success.focus {
+  border-color: #4cae4c
+}
+
+.book {
+  width: 128px;
+}
+
+.book-title,
+.book-authors {
+  font-size: 0.8em;
+}
+
+.book-title {
+  margin-top: 10px;
+}
+
+.book-authors {
+  color: #999;
+}
+
+.book-top {
+  position: relative;
+  height: 193px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.book-top .label {
+  position: absolute;
+  top: -17px;
+  left: 0;
+  right: 0;
+}
+
+.book-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-color: #4cae4c;
+  cursor: pointer;
+}
+
+.book-check.checked {
+  background-image: url('../../icons/checked.svg');
+}
+
+.book-check.unchecked {
+  background-image: url('../../icons/unchecked.svg');
+}
+
+.book-shelf-changer {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+}
+
+.book-shelf-changer button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #60ac5d;
+  background-image: url('../../icons/arrow-drop-down.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.book-cover {
+  width: 128px;
+  height: 193px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #eee;
+  cursor: pointer;
+}
+.book-cover-title {
+  padding: 20px 10px 0;
+  text-align: center;
+  font-size: 0.8em;
+}

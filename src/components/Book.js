@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { DropdownButton, Label, MenuItem } from 'react-bootstrap'
 
+import './css/Book.css'
+
 import { shelves } from '../shared/Constants'
 
 const Book = ({ book, onChangeShelf, onChangeCheck, showBookDetails, renderingOutsideBookshelf }) => {

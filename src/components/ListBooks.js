@@ -2,8 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import './css/ListBooks.css'
+
 import Bookshelf from './Bookshelf'
-import MultiSelfChanger from './MultiSelfChanger'
+import MultiShelfChanger from './MultiShelfChanger'
 import { shelves } from '../shared/Constants'
 
 const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onMultiChangeShelf, showBookDetails }) => {
@@ -30,7 +32,7 @@ const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onMulti
         <Link to="/search">Add a book</Link>
       </div>
       {books.some(b => b.checked) && (
-        <MultiSelfChanger
+        <MultiShelfChanger
           onClearChecks={onClearChecks}
           onMultiChangeShelf={onMultiChangeShelf}
         />
