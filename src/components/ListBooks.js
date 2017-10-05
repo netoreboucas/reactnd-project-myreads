@@ -8,7 +8,7 @@ import Bookshelf from './Bookshelf'
 import MultiShelfChanger from './MultiShelfChanger'
 import { shelves } from '../shared/Constants'
 
-const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onMultiChangeShelf, showBookDetails }) => {
+const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onCheckAll, onMultiChangeShelf, showBookDetails }) => {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -34,6 +34,7 @@ const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onMulti
       {books.some(b => b.checked) && (
         <MultiShelfChanger
           onClearChecks={onClearChecks}
+          onCheckAll={onCheckAll}
           onMultiChangeShelf={onMultiChangeShelf}
         />
       )}
@@ -46,6 +47,7 @@ ListBooks.propTypes = {
   onChangeShelf: PropTypes.func.isRequired,
   onChangeCheck: PropTypes.func.isRequired,
   onClearChecks: PropTypes.func.isRequired,
+  onCheckAll: PropTypes.func.isRequired,
   onMultiChangeShelf: PropTypes.func.isRequired,
   showBookDetails: PropTypes.func.isRequired
 }

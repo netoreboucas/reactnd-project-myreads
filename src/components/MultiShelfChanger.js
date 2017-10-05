@@ -6,7 +6,7 @@ import './css/MultiShelfChanger.css'
 
 import { shelves } from '../shared/Constants'
 
-const MultiShelfChanger = ({ onClearChecks, onMultiChangeShelf }) => {
+const MultiShelfChanger = ({ onClearChecks, onCheckAll, onMultiChangeShelf }) => {
   return (
     <div className="multi-shelf-changer">
       <div className="close" onClick={onClearChecks} />
@@ -19,12 +19,15 @@ const MultiShelfChanger = ({ onClearChecks, onMultiChangeShelf }) => {
       <Button onClick={() => onMultiChangeShelf('none')}>
         None
       </Button>
+      <div className="separator" />
+      <Button bsStyle="link" onClick={onCheckAll}>check all</Button>
     </div>
   )
 }
 
 MultiShelfChanger.propTypes = {
   onClearChecks: PropTypes.func.isRequired,
+  onCheckAll: PropTypes.func.isRequired,
   onMultiChangeShelf: PropTypes.func.isRequired
 }
 

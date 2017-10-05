@@ -92,6 +92,15 @@ class SearchBooks extends Component {
     ))
   }
 
+  onCheckAll = () => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        b.checked = true
+        return b
+      })
+    ))
+  }
+
   onMultiChangeShelf = (shelf) => {
     let promise = Promise.resolve()
     this.state.books.forEach((book) => {
@@ -138,6 +147,7 @@ class SearchBooks extends Component {
         {books.some(b => b.checked) && (
           <MultiShelfChanger
             onClearChecks={this.onClearChecks}
+            onCheckAll={this.onCheckAll}
             onMultiChangeShelf={this.onMultiChangeShelf}
           />
         )}

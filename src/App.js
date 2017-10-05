@@ -74,6 +74,15 @@ class BooksApp extends React.Component {
     ))
   }
 
+  onCheckAll = () => {
+    this.setState(({ books }) => (
+      books.map(b => {
+        b.checked = true
+        return b
+      })
+    ))
+  }
+
   onMultiChangeShelf = (shelf) => {
     let promise = Promise.resolve()
     this.state.books.forEach((book) => {
@@ -114,6 +123,7 @@ class BooksApp extends React.Component {
             onChangeShelf={this.onChangeShelf}
             onChangeCheck={this.onChangeCheck}
             onClearChecks={this.onClearChecks}
+            onCheckAll={this.onCheckAll}
             onMultiChangeShelf={this.onMultiChangeShelf}
             showBookDetails={this.showBookDetails}
           />
