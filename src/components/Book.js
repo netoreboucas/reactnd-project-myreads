@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { DropdownButton, Label, MenuItem } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { DropdownButton, Label, MenuItem } from 'react-bootstrap';
 
-import './css/Book.css'
+import './css/Book.css';
 
-import { shelves } from '../shared/Constants'
+import { shelves } from '../shared/Constants';
 
 const Book = ({ book, onChangeShelf, onChangeCheck, showBookDetails, renderingOutsideBookshelf }) => {
-  const onShelf = renderingOutsideBookshelf && book.shelf !== 'none'
+  const onShelf = renderingOutsideBookshelf && book.shelf !== 'none';
 
   return (
     <div className="book">
@@ -35,8 +35,8 @@ const Book = ({ book, onChangeShelf, onChangeCheck, showBookDetails, renderingOu
       <div className="book-title">{book.title}</div>
       <div className="book-authors">{book.authors ? book.authors.join(', ') : ''}</div>
     </div>
-  )
-}
+  );
+};
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
@@ -44,6 +44,6 @@ Book.propTypes = {
   onChangeCheck: PropTypes.func.isRequired,
   showBookDetails: PropTypes.func.isRequired,
   renderingOutsideBookshelf: PropTypes.bool
-}
+};
 
-export default Book
+export default Book;

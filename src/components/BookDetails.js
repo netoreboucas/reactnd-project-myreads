@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Button, Modal } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button, Modal } from 'react-bootstrap';
 
-import './css/BookDetails.css'
+import './css/BookDetails.css';
 
 const BookDetails = ({ book, onClose }) => {
-  if (!book) return false
+  if (!book) return false;
 
   return (
     <Modal show onHide={onClose} dialogClassName="book-details-modal">
@@ -19,12 +19,12 @@ const BookDetails = ({ book, onClose }) => {
         <Button onClick={onClose}>Close</Button>
       </Modal.Footer>
     </Modal>
-  )
-}
+  );
+};
 
 BookDetails.propTypes = {
   book: PropTypes.object,
   onClose: PropTypes.func.isRequired
-}
+};
 
-export default BookDetails
+export default BookDetails;

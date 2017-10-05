@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import './css/BooksGrid.css'
+import './css/BooksGrid.css';
 
-import Book from './Book'
+import Book from './Book';
 
 const BooksGrid = ({ books, onChangeShelf, onChangeCheck, showBookDetails, renderingOutsideBookshelf }) => {
   return (
@@ -20,8 +20,8 @@ const BooksGrid = ({ books, onChangeShelf, onChangeCheck, showBookDetails, rende
         </li>
       )}
     </ol>
-  )
-}
+  );
+};
 
 BooksGrid.propTypes = {
   books: PropTypes.array.isRequired,
@@ -29,6 +29,6 @@ BooksGrid.propTypes = {
   onChangeCheck: PropTypes.func.isRequired,
   showBookDetails: PropTypes.func.isRequired,
   renderingOutsideBookshelf: PropTypes.bool
-}
+};
 
-export default BooksGrid
+export default BooksGrid;

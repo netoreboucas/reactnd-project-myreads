@@ -1,12 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import './css/ListBooks.css'
+import './css/ListBooks.css';
 
-import Bookshelf from './Bookshelf'
-import MultiShelfChanger from './MultiShelfChanger'
-import { shelves } from '../shared/Constants'
+import Bookshelf from './Bookshelf';
+import MultiShelfChanger from './MultiShelfChanger';
+import { shelves } from '../shared/Constants';
 
 const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onCheckAll, onMultiChangeShelf, showBookDetails }) => {
   return (
@@ -39,8 +39,8 @@ const ListBooks = ({ books, onChangeShelf, onChangeCheck, onClearChecks, onCheck
         />
       )}
     </div>
-  )
-}
+  );
+};
 
 ListBooks.propTypes = {
   books: PropTypes.array.isRequired,
@@ -50,6 +50,6 @@ ListBooks.propTypes = {
   onCheckAll: PropTypes.func.isRequired,
   onMultiChangeShelf: PropTypes.func.isRequired,
   showBookDetails: PropTypes.func.isRequired
-}
+};
 
-export default ListBooks
+export default ListBooks;

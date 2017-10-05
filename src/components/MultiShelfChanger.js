@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Button } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
-import './css/MultiShelfChanger.css'
+import './css/MultiShelfChanger.css';
 
-import { shelves } from '../shared/Constants'
+import { shelves } from '../shared/Constants';
 
 const MultiShelfChanger = ({ onClearChecks, onCheckAll, onMultiChangeShelf }) => {
   return (
@@ -22,13 +22,13 @@ const MultiShelfChanger = ({ onClearChecks, onCheckAll, onMultiChangeShelf }) =>
       <div className="separator" />
       <Button bsStyle="link" onClick={onCheckAll}>check all</Button>
     </div>
-  )
-}
+  );
+};
 
 MultiShelfChanger.propTypes = {
   onClearChecks: PropTypes.func.isRequired,
   onCheckAll: PropTypes.func.isRequired,
   onMultiChangeShelf: PropTypes.func.isRequired
-}
+};
 
-export default MultiShelfChanger
+export default MultiShelfChanger;
