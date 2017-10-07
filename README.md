@@ -1,6 +1,6 @@
 # MyReads Project
 
-Projeto de avaliação final para o curso de Fundamentos de Reação da Udacity.
+Projeto de avaliação final para o curso de Fundamentos de React da Udacity.
 Aluno: Neto Rebouças
 
 ## Instalação e execução
