@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Progress from 'react-progress-2';
 
@@ -11,7 +11,7 @@ import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
 import BookDetails from './components/BookDetails';
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     books: [],
     selectedBook: null
